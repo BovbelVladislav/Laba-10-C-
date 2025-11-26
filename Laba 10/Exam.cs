@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using static System.Net.Mime.MediaTypeNames;
-//Лиза
+
 namespace Laba_10
 {
     internal class Exam

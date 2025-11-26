@@ -4,4 +4,3 @@
     Вachelor,
     SecondEducation
 }
-//Влад
