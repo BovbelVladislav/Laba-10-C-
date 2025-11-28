@@ -6,73 +6,73 @@ namespace Laba_10
 {
     internal class Person
     {
-        string Name;
-        string Surname;
-        DateTime Birthday;
-        public string N
+         string name;
+         string surname;
+         DateTime birthday;
+         public string Name
         {
             get
             {
-                return Name; 
+                return name; 
             }
             set
             {
-                Name = value;
+                name = value;
             }
         }
-        public string S
+        public string Surname
         {
             get
             {
-                return Surname;
+                return surname;
             }
             set
             {
-                Surname = value;
+                surname = value;
             }
         }
-        public DateTime B
+        public DateTime Birthday
         {
             get
             {
-                return Birthday;
+                return birthday;
             }
             set
             {
-                Birthday = value;
+                birthday = value;
             }
         }
         public int BirthYear
         {
             get
             {
-                return Birthday.Year;
+                return birthday.Year;
             }
             set
             {
-                Birthday = new DateTime(value, Birthday.Month, Birthday.Day);
+                birthday = new DateTime(value, birthday.Month, birthday.Day);
             }
         }
 
-        public Person(string name, string surname, DateTime birthday)
+        public Person(string Name, string Surname, DateTime Birthday)
         {
-            Name = name;
-            Surname = surname;
-            Birthday = birthday;
+            name = Name;
+            surname = Surname;
+            birthday = Birthday;
         }
         public Person()
         {
-            Name = "";
-            Surname = "";
-            DateTime Birthday = new DateTime(2007, 10, 14);
+            name = "";
+            surname = "";
+            DateTime birthday = new DateTime(2007, 10, 14);
         }
         public override string ToString()
         {
-            return $"{Surname} {Name}, дата рождения: {Birthday}";
+            return $"{surname} {name}, дата рождения: {birthday}";
         }
         public virtual string ToShortString()
         {
-            return $"{Surname} {Name}";
+            return $"{surname} {name}";
         }
     }
 }

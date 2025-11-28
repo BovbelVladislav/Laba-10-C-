@@ -6,56 +6,81 @@ namespace Laba_10
 {
     internal class Student
     {
-        Person Person { get; set; }
-        Education Education { get; set; }
-        int Grup_Numb { get; set; }
-        Exam[] Passed_exams { get; set; }
-        public Student(Person person, Education education, int grup_numb)
+        Person person;
+        Education education;
+        int grup_Numb;
+        Exam[] passed_exams;
+        public Person Person
         {
-            Person = person;
-            Education = education;
-            Grup_Numb=grup_numb;
+            get => person;
+            set => person = value;
+        }
+
+        public Education Education
+        {
+            get => education;
+            set => education = value;
+        }
+
+        public int GroupNumber
+        {
+            get => grup_Numb;
+            set => grup_Numb = value;
+        }
+
+        public Exam[] PassedExams
+        {
+            get => passed_exams;
+            set => passed_exams = value;
+        }
+        public Student(Person person, Education education, int grup_numb,params Exam[] exams)
+        {
+            this.person = person;
+            this.education = education;
+            this.grup_Numb=grup_numb;
+            this.passed_exams =exams;
         }
         public Student()
         {
-            Person = new Person();
-            Education=default;
-            Grup_Numb=0;
+            this.person = new Person();
+            this.education=default;
+            this.grup_Numb=0;
+            this.passed_exams=new Exam[0];
         }
         public double AvgGrade
         {
             get
             {
                 int grads = 0;
-                foreach (Exam grade in Passed_exams)
+                foreach (Exam grade in passed_exams)
                 {
                     grads+=grade.Grade;
                 }
-                return (double)grads/Passed_exams.Length;
+                return (double)grads/passed_exams.Length;
             }
         }
         public bool this[Education education]
         {
-            get { return Education == education; }
+            get { return this.education == education; }
         }
         public void AddExams(params Exam[] exams)
         {
-            int oldLength = Passed_exams.Length;
+            int oldLength = passed_exams.Length;
             Exam[] newArray = new Exam[oldLength + exams.Length];
             for (int i = 0; i < oldLength; i++)
-                newArray[i] = Passed_exams[i];
+                newArray[i] = passed_exams[i];
             for (int i = 0; i < exams.Length; i++)
                 newArray[oldLength + i] = exams[i];
-            Passed_exams = newArray;
+            passed_exams = newArray;
         }
         public override string ToString()
         {
             string examsText;
 
-            if (Passed_exams != null && Passed_exams.Length > 0)
+            if (passed_exams != null && passed_exams.Length > 0)
             {
                 examsText = "";
-                foreach (var exam in Passed_exams)
+                foreach (var exam in passed_exams)
                 {
                     examsText += "\n  - " + exam.ToString();
                 }
@@ -65,11 +90,11 @@ namespace Laba_10
                 examsText = "Нет данных";
             }
 
-            return $"ФИО: {Person}\nФорма обучения: {Education}\nНомер группы: {Grup_Numb}\nСданные экзамены:\n  - {examsText}";
+            return $"ФИО: {person}\nФорма обучения: {education}\nНомер группы: {grup_Numb}\nСданные экзамены:\n  - {examsText}";
         }
         public virtual string ToShortString()
         {
-            return $"ФИО: {Person}\nФорма обучения: {Education}\nНомер группы: {Grup_Numb}\nСредний балл: {AvgGrade}";
+            return $"ФИО: {person}\nФорма обучения: {education}\nНомер группы: {grup_Numb}\nСредний балл: {AvgGrade}";
         }
     }
 }
