@@ -41,7 +41,7 @@ namespace Laba_10
         }
         public override string ToString()
         {
-            return $"${distipline}, оценка: {grade}, дата экзамена: {date_exam}";
+            return $"{distipline}, оценка: {grade}, дата экзамена: {date_exam}";
         }
     }
 }
